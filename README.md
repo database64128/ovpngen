@@ -1,3 +1,5 @@
+# `ovpngen` - An OpenVPN client configuration generator.
+
 ## Overview
 A simple shell script that creates OpenVPN compatible tunnel profiles in the unified file format. Tested on:
 * Linux OpenVPN version 2.4.6
@@ -14,20 +16,20 @@ Invoke the script with 5 tokens and the profile is outputted to stdout.
   6. Optionally define a port number (defaults to 1194 if left blank).
   7. Optionally define a protocol (defaults to udp if left blank).
 
-### Example (run as root) using all 7 arguments to setup a profile working port 443 using TCP
-```
-CLIENT=foo
-
-./ovpngen nipple.titty.org \
+### Example (run as root) using all 7 arguments to setup a profile on `server.xyz:443` using UDP
+```bash
+$ CLIENT=foo
+$ ./ovpngen server.xyz \
    /etc/openvpn/server/ca.crt \
-   /etc/easy-rsa/pki/signed/$CLIENT.crt \
+   /etc/easy-rsa/pki/issued/$CLIENT.crt \
    /etc/easy-rsa/pki/private/$CLIENT.key \
    /etc/openvpn/server/ta.key \
-	 443 \
-	 tcp > $CLIENT.ovpn
+	 1194 \
+	 udp > $CLIENT.ovpn
 ```
 
 The resulting foo.ovpn may need to be edited. Pay attention to the commented lines!
 
-### Credit
-Majority of the credit goes to the script's original author, [trovao](https://github.com/trovao).  His version can be found [here](https://gist.github.com/trovao/18e428b5a758df24455b).
+## Credits
+- Forked from [graysky2/ovpngen](https://github.com/graysky2/ovpngen). Licensed under the [MIT License](LICENSE).
+- Majority of the credit goes to the script's original author, [trovao](https://github.com/trovao).  His version can be found [here](https://gist.github.com/trovao/18e428b5a758df24455b).

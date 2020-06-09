@@ -1,0 +1,5 @@
+*.ovpn
+*.crt
+*.key
+*.pem
+*.conf
